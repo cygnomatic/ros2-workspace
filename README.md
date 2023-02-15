@@ -55,7 +55,7 @@ Click on "use this template"
 
 ### Create your repository
 
-On the next dialog, name the repository you would like to start and decide if you want all of the branches, or just the latest LTS: Foxy.
+On the next dialog, name the repository you would like to start and decide if you want all of the branches, or just the latest LTS: foxy.
 
 ![template_new](https://user-images.githubusercontent.com/6098197/91332035-713ee980-e780-11ea-81d3-13b170f568b0.png)
 
@@ -84,7 +84,6 @@ In the dialog, select "Remote Containers: Reopen in container"
 VSCode will build the dockerfile inside of `.devcontainer` for you.  If you open a terminal inside VSCode (Terminal->New Terminal), you should see that your username has been changed to `ros`, and the bottom left green corner should say "Dev Container"
 
 ![template_container](https://user-images.githubusercontent.com/6098197/91332895-adbf1500-e781-11ea-8afc-7a22a5340d4a.png)
-
 
 ### Update the template with your code
 
