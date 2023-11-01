@@ -38,10 +38,12 @@
 				"ms-vscode.cpptools",
 				"redhat.vscode-yaml",
 				"smilerobotics.urdf",
-				"streetsidesoftware.code-spell-checker",
 				"twxs.cmake",
 				"yzhang.markdown-all-in-one",
-				"zachflower.uncrustify"
+				"zachflower.uncrustify",
+				"GitHub.copilot",
+				"donjayamanne.githistory",
+				"CodeInChinese.EnglishChineseDictionary"
 			]
 		}
 	}
