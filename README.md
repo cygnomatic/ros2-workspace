@@ -10,7 +10,7 @@ A fork of [athackst/vscode_ros2_workspace](https://github.com/athackst/vscode_ro
 
 #### Windows - WSL2
 
-> **Warning**  
+> [!IMPORTANT]   
 > 1. 请确保 **C 盘下至少有 5G 的空余空间**。否则可能安装失败。  
 > 2. 由于网络原因，可能需要提前配置好系统代理。  
 
@@ -29,7 +29,7 @@ A fork of [athackst/vscode_ros2_workspace](https://github.com/athackst/vscode_ro
 
 4. 打开 Docker Desktop，跳过登录和那些麻烦的选择。
 
-> **Tip**  
+> [!TIP]  
 > Docker 服务会随 Docker Desktop 启动。启动完毕后可关闭 Docker Desktop，保留 Docker 服务在后台即可。
 
 #### Linux
@@ -46,7 +46,7 @@ See [docker docs](https://docs.docker.com/engine/install/).
 
 Now that you've cloned your repo onto your computer, you can open it in VSCode (File->Open Folder).   
 
-> **Warning**  
+> [!NOTE]  
 > 请在打开 DevContainer 时关闭代理软件的 TUN 模式。否则会导致 vscode 插件无法自动安装。
 
 When you open it for the first time, you should see a little popup that asks you if you would like to open it in a container.  Say yes!
