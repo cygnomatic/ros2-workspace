@@ -2,71 +2,52 @@
 
 This template will get you set up using ROS2 with VSCode as your IDE.
 
-See [how I develop with vscode and ros2](https://www.allisonthackston.com/articles/vscode_docker_ros2.html) for a more in-depth look on how to use this workspace.
+A fork of [athackst/vscode_ros2_workspace](https://github.com/athackst/vscode_ros2_workspace) with better wsl GUI support.
 
-## Features
+## Usage
 
-### Style
+### Setup docker
 
-ROS2-approved formatters are included in the IDE.  
+#### Windows - WSL2
 
-* **c++** uncrustify; config from `ament_uncrustify`
-* **python** autopep8; vscode settings consistent with the [style guide](https://index.ros.org/doc/ros2/Contributing/Code-Style-Language-Versions/)
+> [!IMPORTANT]   
+> 1. 请确保 **C 盘下至少有 5G 的空余空间**。否则可能安装失败。  
+> 2. 由于网络原因，可能需要提前配置好系统代理。  
 
-### Tasks
+1. 使用管理员权限打开终端
 
-There are many pre-defined tasks, see [`.vscode/tasks.json`](.vscode/tasks.json) for a complete listing.  Feel free to adjust them to suit your needs.  
+2. 在打开的终端中运行：
+	```powershell
+	wsl --install
+	```
 
-Take a look at [how I develop using tasks](https://www.allisonthackston.com/articles/vscode_tasks.html) for an idea on how I use tasks in my development.
+3. 安装 Docker Desktop。
 
-### Debugging
+	```powershell
+	winget install Docker.DockerDesktop
+	```
 
-This template sets up debugging for python files, gdb for cpp programs and ROS launch files.  See [`.vscode/launch.json`](.vscode/launch.json) for configuration details.
+4. 打开 Docker Desktop，跳过登录和那些麻烦的选择。
 
-### Continuous Integration
+> [!TIP]  
+> Docker 服务会随 Docker Desktop 启动。启动完毕后可关闭 Docker Desktop，保留 Docker 服务在后台即可。
 
-The template also comes with basic continuous integration set up. See [`.github/workflows/ros.yaml`](/.github/workflows/ros.yaml).
+#### Linux
 
-To remove a linter just delete it's name from this line:
+See [docker docs](https://docs.docker.com/engine/install/).
 
-```yaml
-      matrix:
-          linter: [cppcheck, cpplint, uncrustify, lint_cmake, xmllint, flake8, pep257]
-```
+### Clone the repo
 
-## How to use this template
+将本项目克隆至本地。并切换分支：
+-  Windows: `wsl2` 分支
+-  Linux x86_64: `main` 分支
 
-### Prerequisites
+### Open the repo in vscode
 
-You should already have Docker and VSCode with the remote containers plugin installed on your system.
+Now that you've cloned your repo onto your computer, you can open it in VSCode (File->Open Folder).   
 
-* [docker](https://docs.docker.com/engine/install/)
-* [vscode](https://code.visualstudio.com/)
-* [vscode remote containers plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-
-### Get the template
-
-Click on "use this template"
-
-![template_use](https://user-images.githubusercontent.com/6098197/91331899-43f23b80-e780-11ea-92c8-b4665ce126f1.png)
-
-### Create your repository
-
-On the next dialog, name the repository you would like to start and decide if you want all of the branches, or just the latest LTS: humble.
-
-![template_new](https://user-images.githubusercontent.com/6098197/91332035-713ee980-e780-11ea-81d3-13b170f568b0.png)
-
-Github will then create a new repository with the contents of this one in your account.  It grabs the latest changes as "initial commit".
-
-### Clone your repo
-
-Now you can clone your repo as normal
-
-![template_download](https://user-images.githubusercontent.com/6098197/91332342-e4e0f680-e780-11ea-9525-49b0afa0e4bb.png)
-
-### Open it in vscode
-
-Now that you've cloned your repo onto your computer, you can open it in VSCode (File->Open Folder). 
+> [!NOTE]  
+> 请在打开 DevContainer 时关闭代理软件的 TUN 模式。否则会导致 vscode 插件无法自动安装。
 
 When you open it for the first time, you should see a little popup that asks you if you would like to open it in a container.  Say yes!
 
@@ -100,23 +81,7 @@ VSCode will build the dockerfile inside of `.devcontainer` for you.  If you open
 
 #### The gui doesn't show up
 
-This is likely because the DISPLAY environment variable is not getting set properly.
-
-1. Find out what your DISPLAY variable should be
-
-      In your WSL2 Ubuntu instance
-
-      ```
-      echo $DISPLAY
-      ```
-
-2. Copy that value into the `.devcontainer/devcontainer.json` file
-
-      ```jsonc
-      	"containerEnv": {
-		      "DISPLAY": ":0",
-         }
-      ```
+请使用 `wsl2` 分支。使用 `main` 分支会导致无法使用 GUI。
 
 #### I want to use vGPU
 
