@@ -6,13 +6,15 @@ A fork of [athackst/vscode_ros2_workspace](https://github.com/athackst/vscode_ro
 
 ## Usage
 
+### Prerequisite
+
+1. **系统盘下至少有 5G 的空余空间**。否则可能安装失败。  
+2. 由于网络原因，可能需要提前配置好系统代理。  
+3. 设备有可用的 Nvidia 显卡。
+
 ### Setup docker
 
 #### Windows - WSL2
-
-> [!IMPORTANT]   
-> 1. 请确保 **C 盘下至少有 5G 的空余空间**。否则可能安装失败。  
-> 2. 由于网络原因，可能需要提前配置好系统代理。  
 
 1. 使用管理员权限打开终端
 
@@ -41,6 +43,71 @@ See [docker docs](https://docs.docker.com/engine/install/).
 将本项目克隆至本地。并切换分支：
 -  Windows: `wsl2` 分支
 -  Linux x86_64: `main` 分支
+
+### Configurate USB passthrough (WSL Only)
+
+> [!TIP]  
+> Linux 系统不需要按照此部分操作。可直接使用 USB 设备。
+
+> [!NOTE]  
+> 此解决方案应当还能优化。Docker Desktop 虽然附带了一个基于 Alpine 的 WSL 镜像 `docker-desktop`，但 usbipd-win 不支持直接 attach 到 `docker-desktop` 内。由 [此 issue ](https://github.com/dorssel/usbipd-win/issues/669)建议安装一个单独的 Ubuntu 22.04 镜像用于接入 USB。不优雅但能用。
+
+1. 下载 usbipd-win >= 4.0
+   
+   ```
+	winget install usbipd
+   ```
+   > [!IMPORTANT]   
+   > 请确保你的 `usbipd-win` 版本 >= 4.0. 你可以手动从 [GitHub Release](https://github.com/dorssel/usbipd-win/releases) 安装最新版。
+
+
+2. 安装 Ubuntu-22.04 WSL
+   
+   ```powershell
+   wsl --install Ubuntu-22.04
+   ```
+   首次运行请等待安装完成。安装完成后会自动切入 WSL Ubuntu-22.04 系统内终端。  
+   **保持此窗口在后台运行，直到完成此部分前不要关闭。**
+
+3. 列出设备的 BUSID  
+   
+   启动一个有管理员权限的新终端，运行：
+   ```powershell
+   usbipd list
+   ```
+   输出应当类似于：
+   ```
+   Connected:
+	BUSID  VID:PID    DEVICE                     STATE
+	1-3    27c6:589a  Goodix fingerprint         Not shared
+	2-3    8087:0032  英特尔(R) 无线 Bluetooth(R)  Not shared
+	3-1    2b7e:b557  XiaoMi USB 2.0 Webcam      Not shared
+   
+   Persisted:
+   	GUID                                  DEVICE
+   ```
+
+4. 配置穿透设备
+   ```powershell
+   usbipd bind --busid=<BUSID>
+   usbipd attach --wsl --busid=<BUSID>
+   ```
+   将你需要在 Docker 环境中使用的设备 BUSID 替换掉以上的 `<BUSID>`。例如：
+   ```powershell
+   usbipd bind --busid=3-1
+   ```
+
+   > [!TIP]  
+   > 每次重启宿主机，你需要重新运行第 4 步。
+
+
+### Setup CUDA
+
+在宿主机上安装普通 CUDA 即可。Docker 镜像中已内置 CUDA。  
+不需要安装 CUDA for WSL2 或在 WSL2 中安装 CUDA。  
+```powershell
+winget install -e --id Nvidia.CUDA -v 11.8
+```
 
 ### Open the repo in vscode
 
