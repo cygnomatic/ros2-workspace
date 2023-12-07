@@ -4,7 +4,7 @@
 # Example:
 ############
 repositories:
-  examples:
+  hik_camera:
     type: git
-    url: https://github.com/ros2/examples.git
-    version: humble
+    url: https://gitlab.com/rm_vision/ros2-hik-camera.git
+    version: main

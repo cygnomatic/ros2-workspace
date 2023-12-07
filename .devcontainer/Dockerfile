@@ -16,7 +16,22 @@ RUN cp /var/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-11.8/nv-tensorrt-local-
    && apt-get clean -y \
    && rm -rf /var/lib/apt/lists/* \
    && rm -f /tmp/nv-tensorrt-local-repo-ubuntu2204-8.6.1-cuda-11.8_1.0-1_amd64.deb
-ENV DEBIAN_FRONTEND=dialog
+
+# Install usbutils
+RUN apt-get update \
+   && apt-get -y install --no-install-recommends usbutils \
+   && apt-get autoremove -y \
+   && apt-get clean -y \
+   && rm -rf /var/lib/apt/lists/*
+
+# Install ROS packages
+RUN apt-get update \
+   && apt-get -y install --no-install-recommends \
+      ros-humble-camera-calibration \
+      ros-humble-foxglove-bridge \
+   && apt-get autoremove -y \
+   && apt-get clean -y \
+   && rm -rf /var/lib/apt/lists/*
 
 # Install global pip packages
 COPY python_requirements.txt /tmp/
@@ -25,13 +40,14 @@ RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple --upg
   && pip install --no-cache-dir -r /tmp/python_requirements.txt
 RUN rm /tmp/python_requirements.txt
 
-# # Install ohmyzsh
-# RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
-#     -p git \
-#     -p sudo \
-#     -p https://github.com/zsh-users/zsh-autosuggestions \
-#     -p https://github.com/zsh-users/zsh-completions
+# Enable dialog
+ENV DEBIAN_FRONTEND=dialog
 
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
+
+# Set up rosdistro mirror
+RUN mkdir -p /etc/ros/rosdep/sources.list.d/ \
+   && curl -o /etc/ros/rosdep/sources.list.d/20-default.list https://mirrors.tuna.tsinghua.edu.cn/github-raw/ros/rosdistro/master/rosdep/sources.list.d/20-default.list \
+   && echo 'export ROSDISTRO_INDEX_URL=https://mirrors.tuna.tsinghua.edu.cn/rosdistro/index-v4.yaml' >> /home/ros/.bashrc
