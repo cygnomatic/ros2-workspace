@@ -50,7 +50,7 @@ See [docker docs](https://docs.docker.com/engine/install/).
 > Linux 系统不需要按照此部分操作。可直接使用 USB 设备。
 
 > [!NOTE]  
-> 此解决方案应当还能优化。Docker Desktop 虽然附带了一个基于 Alpine 的 WSL 镜像 `docker-desktop`，但 usbipd-win 不支持直接 attach 到 `docker-desktop` 内。由 [此 issue](https://github.com/dorssel/usbipd-win/issues/669) 建议安装一个单独的 Ubuntu 22.04 镜像用于接入 USB。不优雅但能用。
+> 需要更好的解决方案。Docker Desktop 运行于一个基于 Alpine 的 WSL 镜像 `docker-desktop`，而 usbipd-win 不支持直接 attach 到 `docker-desktop` 内。[此 issue](https://github.com/dorssel/usbipd-win/issues/669) 建议安装一个单独的 Ubuntu 22.04 镜像用于接入 USB。能用但不优雅。
 
 1. 下载 usbipd-win >= 4.0
    
