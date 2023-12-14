@@ -45,7 +45,8 @@
 				"zachflower.uncrustify",
 				"GitHub.copilot",
 				"donjayamanne.githistory",
-				"CodeInChinese.EnglishChineseDictionary"
+				"CodeInChinese.EnglishChineseDictionary",
+				"ms-python.black-formatter"
 			]
 		}
 	}
