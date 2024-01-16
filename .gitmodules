@@ -1,0 +1,4 @@
+[submodule "src/hik_camera"]
+	path = src/hik_camera
+	url = https://gitlab.com/rm_vision/ros2-hik-camera.git
+	branch = main

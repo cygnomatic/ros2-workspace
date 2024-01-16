@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-vcs import < src/ros2.repos src
+git submodule init
+git submodule update
 sudo apt-get update
 rosdep update
 rosdep install --from-paths src --ignore-src -y
