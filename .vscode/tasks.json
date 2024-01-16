@@ -191,28 +191,28 @@
             "label": "new ament_cmake package",
             "detail": "Create a new ROS cpp package from a template.",
             "type": "shell",
-            "command": "ros2 pkg create --destination-directory src --build-type ament_cmake ${input:package}",
+            "command": [
+                "ros2 pkg create --maintainer-email robomaster@cygnomatic.net --maintainer-name Cygnomatic --destination-directory src --build-type ament_cmake ${input:package}",
+                "&& mv src/${input:package}/ src/tmp_${input:package}/",
+                "&& git rm --cached --ignore-unmatch src/${input:package}/",
+                "&& git submodule add --force ${input:submodule_url} src/${input:package}/",
+                "&& mv src/tmp_${input:package}/* src/${input:package}/",
+                "&& rm -r src/tmp_${input:package}"
+            ],
             "problemMatcher": []
         },
         {
             "label": "new ament_python package",
             "detail": "Create a new ROS python package from a template.",
             "type": "shell",
-            "command": "ros2 pkg create --destination-directory src --build-type ament_python ${input:package}",
-            "problemMatcher": []
-        },
-        {
-            "label": "import from workspace file",
-            "detail": "Use vcs to import modules specified by a workspace/rosinstall file.",
-            "type": "shell",
-            "command": "vcs import < src/ros2.repos src",
-            "problemMatcher": []
-        },
-        {
-            "label": "update workspace file",
-            "detail": "Use vcs to update repositories in src to workspace file.",
-            "type": "shell",
-            "command": "vcs export src > src/ros2.repos",
+            "command": [
+                "ros2 pkg create --maintainer-email robomaster@cygnomatic.net --maintainer-name Cygnomatic --destination-directory src --build-type ament_python ${input:package}",
+                "&& mv src/${input:package}/ src/tmp_${input:package}/",
+                "&& git rm --cached --ignore-unmatch src/${input:package}/",
+                "&& git submodule add --force ${input:submodule_url} src/${input:package}/",
+                "&& mv src/tmp_${input:package}/* src/${input:package}/",
+                "&& rm -r src/tmp_${input:package}"
+            ],
             "problemMatcher": []
         },
         {
@@ -229,19 +229,17 @@
             "command": "./setup.sh",
             "problemMatcher": []
         },
-        {
-            "label": "add submodules from .repos",
-            "detail": "Create a git submodule for all repositories in your .repos file",
-            "type": "shell",
-            "command": "python3 .devcontainer/repos_to_submodules.py",
-            "problemMatcher": []
-        }
     ],
     "inputs": [
         {
             "id": "package",
             "type": "promptString",
             "description": "Package name"
+        },
+        {
+            "id": "submodule_url",
+            "type": "promptString",
+            "description": "Submodule url"
         }
     ]
 }
