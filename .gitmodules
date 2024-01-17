@@ -6,3 +6,6 @@
 	path = src/ros_tcp_endpoint
 	url = git@github.com:Unity-Technologies/ROS-TCP-Endpoint.git
 	branch = dev-ros2
+[submodule "src/armor_detection"]
+	path = src/armor_detection
+	url = git@github.com:Raven-July/Armor_Detection.git
