@@ -2,3 +2,7 @@
 	path = src/hik_camera
 	url = https://gitlab.com/rm_vision/ros2-hik-camera.git
 	branch = main
+[submodule "src/ros_tcp_endpoint"]
+	path = src/ros_tcp_endpoint
+	url = git@github.com:Unity-Technologies/ROS-TCP-Endpoint.git
+	branch = dev-ros2
