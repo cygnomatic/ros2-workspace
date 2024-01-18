@@ -6,7 +6,7 @@ else
     HAS_GPU="disable"
 fi
 
-if grep -q microsoft /proc/version; then
+if [[ $(grep microsoft /proc/version) ]]; then
     OS="win"
 else
     OS="unix"

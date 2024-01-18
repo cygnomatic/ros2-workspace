@@ -1,7 +1,7 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
 	"service": "cygnomatic_workspace",
-	"initializeCommand": ".devcontainer/setup_container.sh",
+	"initializeCommand": "bash .devcontainer/setup_container.sh",
 	"dockerComposeFile": [
 		"docker-compose.yaml",
 		"docker-compose.gpu.yaml",
