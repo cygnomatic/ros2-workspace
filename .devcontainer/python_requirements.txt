@@ -2,3 +2,4 @@ numpy==1.26.1
 opencv-python
 ultralytics
 tensorrt
+typing-extensions==4.3.0
