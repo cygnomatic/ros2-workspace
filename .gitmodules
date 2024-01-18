@@ -9,3 +9,4 @@
 [submodule "src/armor_detection"]
 	path = src/armor_detection
 	url = git@github.com:Raven-July/Armor_Detection.git
+	branch = main
