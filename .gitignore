@@ -3,3 +3,5 @@ install/*
 log/*
 site/*
 MvSdkLog/*
+.devcontainer/docker-compose.gpu.yaml
+.devcontainer/docker-compose.os.yaml

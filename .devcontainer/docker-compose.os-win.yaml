@@ -1,0 +1,13 @@
+version: '3'
+services:
+  cygnomatic_workspace:
+    network_mode: bridge
+    volumes:
+      - /run/desktop/mnt/host/wslg:/mnt/wslg
+      - /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix
+    environment:
+      DISPLAY: ":0"
+      WAYLAND_DISPLAY: "wayland-0"
+      XDG_RUNTIME_DIR: "/mnt/wslg/runtime-dir"
+      PULSE_SERVER: "/mnt/wslg/PulseServer"
+      LIBGL_ALWAYS_SOFTWARE: "1"
