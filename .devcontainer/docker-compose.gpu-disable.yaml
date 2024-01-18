@@ -1,0 +1,7 @@
+version: '3'
+services:
+  cygnomatic_workspace:
+    build:
+      dockerfile: Dockerfile
+    environment:
+      - HAS_GPU=disable
