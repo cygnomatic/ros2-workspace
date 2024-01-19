@@ -211,6 +211,7 @@
                 "&& git rm --cached --ignore-unmatch src/${input:package}/",
                 "&& git submodule add --force ${input:submodule_url} src/${input:package}/",
                 "&& mv src/tmp_${input:package}/* src/${input:package}/",
+                "&& cp -n assets/gitignore_templates/ros2_python.gitignore src/${input:package}/.gitignore",
                 "&& rm -r src/tmp_${input:package}"
             ],
             "problemMatcher": []
