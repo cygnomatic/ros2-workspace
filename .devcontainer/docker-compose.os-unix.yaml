@@ -5,6 +5,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /mnt/wslg:/mnt/wslg
+      - ${HOME}/.ssh/:/home/ros/.ssh/:ro
     environment:
       DISPLAY: "${DISPLAY}"
       WAYLAND_DISPLAY: "${WAYLAND_DISPLAY}"
