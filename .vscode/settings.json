@@ -66,12 +66,18 @@
         ".vscode-insiders",
         ".devcontainer/devcontainer.json"
     ],
-    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.typeCheckingMode": "basic",
     "python.analysis.autoImportCompletions": true,
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
+    "black-formatter.args": [
+        "--skip-string-normalization",
+    ],
     "python.formatting.provider": "none",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportGeneralTypeIssues": "none"
+    },
 }
