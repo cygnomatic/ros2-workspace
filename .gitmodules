@@ -6,3 +6,6 @@
 	path = src/ros_tcp_endpoint
 	url = git@github.com:Unity-Technologies/ROS-TCP-Endpoint.git
 	branch = dev-ros2
+[submodule "src/ros2_pkg_example"]
+	path = src/ros2_pkg_example
+	url = git@github.com:Cygnomatic/ros2_pkg_exmple.git
