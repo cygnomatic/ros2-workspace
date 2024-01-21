@@ -230,6 +230,13 @@
             "command": "./setup.sh",
             "problemMatcher": []
         },
+        {
+            "label": "sync upstream",
+            "detail": "Sync changes from upstream",
+            "type": "shell",
+            "command": "./sync_upstream.sh",
+            "problemMatcher": []
+        },
     ],
     "inputs": [
         {
