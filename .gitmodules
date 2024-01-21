@@ -1,11 +1,11 @@
 [submodule "src/hik_camera"]
 	path = src/hik_camera
-	url = https://gitlab.com/rm_vision/ros2-hik-camera.git
+	url = git@codeup.aliyun.com:cygnomatic/ros2_pkg/ros2-hik-camera.git
 	branch = main
 [submodule "src/ros_tcp_endpoint"]
 	path = src/ros_tcp_endpoint
-	url = git@github.com:Unity-Technologies/ROS-TCP-Endpoint.git
+	url = git@codeup.aliyun.com:cygnomatic/ros2_pkg/ROS-TCP-Endpoint.git
 	branch = dev-ros2
 [submodule "src/ros2_pkg_example"]
 	path = src/ros2_pkg_example
-	url = git@github.com:Cygnomatic/ros2_pkg_exmple.git
+	url = git@codeup.aliyun.com:cygnomatic/ros2_pkg/ros2_pkg_exmple.git
