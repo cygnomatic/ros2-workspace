@@ -5,5 +5,3 @@ site/*
 MvSdkLog/*
 data/*
 !data/.gitkeep
-.devcontainer/docker-compose.gpu.yaml
-.devcontainer/docker-compose.os.yaml
