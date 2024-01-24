@@ -9,3 +9,6 @@
 [submodule "src/ros2_pkg_example"]
 	path = src/ros2_pkg_example
 	url = git@codeup.aliyun.com:cygnomatic/ros2_pkg/ros2_pkg_exmple.git
+[submodule "src/opt_camera"]
+	path = src/opt_camera
+	url = git@codeup.aliyun.com:cygnomatic/ros2_pkg/ros2_opt_camera.git
