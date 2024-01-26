@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/cygnomatic/jetson_base:fb32fdd8
+FROM --platform=linux/arm64 registry.cn-beijing.aliyuncs.com/cygnomatic/jetson_base:fb32fdd8
 
 # Install Python dependencies
 COPY .devcontainer/python_requirements.txt /tmp/python_requirements.txt
