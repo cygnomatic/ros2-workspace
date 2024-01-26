@@ -1,0 +1,11 @@
+.devcontainer
+!.devcontainer/python_requirements.txt
+.vscode/
+.git/
+build/
+install/
+log/
+site/
+MvSdkLog/
+data/
+assets/
