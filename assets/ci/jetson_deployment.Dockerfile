@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 cygnomatic/jetson_base:fa49880
+FROM --platform=linux/arm64 cygnomatic/jetson_base:fca617a
 
 # Install Python dependencies
 COPY .devcontainer/python_requirements.txt /tmp/python_requirements.txt
