@@ -12,12 +12,14 @@ services:
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined
+    ipc: host
+    privileged: true # Insecure, but necessary for dynamic USB passthrough. The `devices` option 
+                     # is more secure but requires rebuilding the container for each new device.
     volumes:
       # Mounts the project folder to '/workspace'. The target path inside the container
       # should match what your application expects. In this case, the compose file is
       # in a sub-folder, so you will mount '..'. You would then reference this path as the
       # 'workspaceFolder' in '.devcontainer/devcontainer.json' so VS Code starts here.
       - ..:/workspace:cached
-    ipc: host
-    devices:
-      - /dev/bus/usb/
+      # Mounts the usb devices to the container. Requires privileged mode.
+      - /dev/bus/usb:/dev/bus/usb
