@@ -18,6 +18,7 @@ RUN apt-get update \
    && apt-get -y install --no-install-recommends \
       ros-humble-camera-calibration \
       ros-humble-foxglove-bridge \
+      ros-humble-tf-transformations \
    && apt-get autoremove -y \
    && apt-get clean -y \
    && rm -rf /var/lib/apt/lists/*
