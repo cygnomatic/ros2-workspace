@@ -244,3 +244,6 @@ site/*
 MvSdkLog/*
 data/*
 !data/.gitkeep
+
+# Hik camera node produce these mystery files
+/core.*
