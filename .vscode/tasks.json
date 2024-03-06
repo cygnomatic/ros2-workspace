@@ -191,29 +191,14 @@
             "label": "new ament_cmake package",
             "detail": "Create a new ROS cpp package from a template.",
             "type": "shell",
-            "command": [
-                "ros2 pkg create --maintainer-email robomaster@cygnomatic.net --maintainer-name Cygnomatic --destination-directory src --build-type ament_cmake ${input:package}",
-                "&& mv src/${input:package}/ src/tmp_${input:package}/",
-                "&& git rm --cached --ignore-unmatch src/${input:package}/",
-                "&& git submodule add --force ${input:submodule_url} src/${input:package}/",
-                "&& mv src/tmp_${input:package}/* src/${input:package}/",
-                "&& rm -r src/tmp_${input:package}"
-            ],
+            "command": "ros2 pkg create --maintainer-email robomaster@cygnomatic.net --maintainer-name Cygnomatic --destination-directory src --build-type ament_cmake ${input:package}",
             "problemMatcher": []
         },
         {
             "label": "new ament_python package",
             "detail": "Create a new ROS python package from a template.",
             "type": "shell",
-            "command": [
-                "ros2 pkg create --maintainer-email robomaster@cygnomatic.net --maintainer-name Cygnomatic --destination-directory src --build-type ament_python ${input:package}",
-                "&& mv src/${input:package}/ src/tmp_${input:package}/",
-                "&& git rm --cached --ignore-unmatch src/${input:package}/",
-                "&& git submodule add --force ${input:submodule_url} src/${input:package}/",
-                "&& mv src/tmp_${input:package}/* src/${input:package}/",
-                "&& cp -n assets/gitignore_templates/ros2_python.gitignore src/${input:package}/.gitignore",
-                "&& rm -r src/tmp_${input:package}"
-            ],
+            "command": "ros2 pkg create --maintainer-email robomaster@cygnomatic.net --maintainer-name Cygnomatic --destination-directory src --build-type ament_python ${input:package}",
             "problemMatcher": []
         },
         {
