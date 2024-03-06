@@ -78,6 +78,8 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "python.analysis.diagnosticSeverityOverrides": {
-        "reportGeneralTypeIssues": "none"
+        "reportArgumentType": "none",
+        "reportGeneralTypeIssues": "none",
+        "reportAttributeAccessIssue": "none"
     },
 }
