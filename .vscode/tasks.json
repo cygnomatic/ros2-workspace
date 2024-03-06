@@ -222,6 +222,36 @@
             "command": "./sync_upstream.sh",
             "problemMatcher": []
         },
+        // ROS cli related tasks
+        {
+            "label": "list topic",
+            "detail": "List all active ROS topics",
+            "type": "shell",
+            "command": "ros2 topic list",
+            "problemMatcher": []
+        },
+        {
+            "label": "hz topic",
+            "detail": "Check publish frequency of a ROS topic",
+            "type": "shell",
+            "command": "ros2 topic hz ${input:topic}",
+            "problemMatcher": []
+        },
+        {
+            "label": "echo topic",
+            "detail": "Echo a ROS topic",
+            "type": "shell",
+            "command": "ros2 topic echo ${input:topic}",
+            "problemMatcher": []
+        },
+        // ROS node related tasks
+        {
+            "label": "launch hik camera",
+            "detail": "Launch hik camera node",
+            "type": "shell",
+            "command": "ros2 launch hik_camera hik_camera.launch.py",
+            "problemMatcher": []
+        },
     ],
     "inputs": [
         {
@@ -233,6 +263,11 @@
             "id": "submodule_url",
             "type": "promptString",
             "description": "Submodule url"
+        },
+        {
+            "id": "topic",
+            "type": "promptString",
+            "description": "ROS topic name"
         }
     ]
 }
