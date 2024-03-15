@@ -8,7 +8,7 @@
             "label": "build",
             "detail": "Build workspace (default)",
             "type": "shell",
-            "command": "./build.sh",
+            "command": ".workspace/tasks/build.sh",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -19,7 +19,7 @@
             "label": "debug",
             "detail": "Build workspace (debug)",
             "type": "shell",
-            "command": "./build.sh",
+            "command": ".workspace/tasks/build.sh",
             "options": {
                 "env": {
                     "BUILD_TYPE": "Debug"
@@ -33,7 +33,7 @@
             "label": "test",
             "detail": "Run all unit tests and show results.",
             "type": "shell",
-            "command": "./test.sh",
+            "command": ".workspace/tasks/test.sh",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -212,14 +212,14 @@
             "label": "setup",
             "detail": "Set up the workspace",
             "type": "shell",
-            "command": "./setup.sh",
+            "command": ".workspace/tasks/setup.sh",
             "problemMatcher": []
         },
         {
             "label": "sync upstream",
             "detail": "Sync changes from upstream",
             "type": "shell",
-            "command": "./sync_upstream.sh",
+            "command": ".workspace/tasks/sync_upstream.sh",
             "problemMatcher": []
         },
         // ROS cli related tasks
