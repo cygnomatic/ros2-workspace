@@ -1,4 +1,4 @@
-FROM arm64v8/ros:humble
+FROM amd64/ros:humble
 
 # Setup auto-completion for ros2
 RUN apt-get update && apt-get install -y git-core bash-completion && \
