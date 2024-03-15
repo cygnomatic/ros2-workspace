@@ -1,0 +1,4 @@
+usbutils
+git-lfs
+net-tools
+iputils-ping
