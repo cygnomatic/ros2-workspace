@@ -36,7 +36,7 @@ RUN apt-get update && \
 
 # Install Python dependencies
 COPY .workspace/requirements/pip_requirements.txt /tmp/pip_requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/pip_requirements.txt && \
+RUN pip install --no-cache-dir -r /tmp/pip_requirements.txt && \
     rm /tmp/pip_requirements.txt
 
 ###########################################

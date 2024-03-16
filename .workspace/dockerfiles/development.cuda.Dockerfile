@@ -1,4 +1,4 @@
-FROM ...
+FROM registry.cn-beijing.aliyuncs.com/cygnomatic/ros2_ws:humble-trt-full-0370adaa
 
 # Install ROS packages
 COPY .workspace/requirements/ros_packages.txt /tmp/ros_packages.txt
@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 # Install Python dependencies
 COPY .workspace/requirements/pip_requirements.txt /tmp/pip_requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/pip_requirements.txt && \
+RUN pip install --no-cache-dir -r /tmp/pip_requirements.txt && \
     rm /tmp/pip_requirements.txt
 
 # Set up auto-source of workspace for ros user
