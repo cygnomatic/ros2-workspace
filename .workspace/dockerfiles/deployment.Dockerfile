@@ -1,5 +1,9 @@
 FROM amd64/ros:humble
 
+# Install pip
+RUN apt-get update && apt-get install -y python3-pip && \
+    rm -rf /var/lib/apt/lists/*
+
 # Setup auto-completion for ros2
 RUN apt-get update && apt-get install -y git-core bash-completion && \
     echo -e "\nif [ -f /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash ]; then source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash; fi" >> /ros_entrypoint.sh && \
