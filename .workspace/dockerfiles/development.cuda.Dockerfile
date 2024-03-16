@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/cygnomatic/ros2_ws:humble-trt-full-0370adaa
+FROM cygnomatic/ros2_tensorrt_dev:latest
 
 # Install ROS packages
 COPY .workspace/requirements/ros_packages.txt /tmp/ros_packages.txt
