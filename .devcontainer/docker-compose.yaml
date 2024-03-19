@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - WORKSPACE="/workspace"
+        - WORKSPACE=/workspace
     cap_add:
       - SYS_PTRACE
     security_opt:
