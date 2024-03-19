@@ -3,7 +3,7 @@
 set -e
 
 # Ensure the ROS 2 environment is sourced, replace this path with your actual ROS 2 setup script path if different
-source /opt/ros/humble/install/setup.bash
+source /opt/ros/humble/install/setup.bash || source /opt/ros/humble/setup.bash
 
 if [ $# -ne 1 ]; then
     echo "Usage: ./install_ros_packages.bash <path_to_ros_packages.txt>"
