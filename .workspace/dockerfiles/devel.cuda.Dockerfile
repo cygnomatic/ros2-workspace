@@ -19,7 +19,3 @@ RUN apt-get update && \
 COPY .workspace/requirements/pip_requirements.txt /tmp/pip_requirements.txt
 RUN pip install --no-cache-dir -r /tmp/pip_requirements.txt && \
     rm /tmp/pip_requirements.txt
-
-# Set up auto-source of workspace for ros user
-ARG WORKSPACE
-RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
