@@ -1,4 +1,4 @@
-FROM cygnomatic/ros2_tensorrt_dev:latest
+FROM cygnomatic/ros2ws_devel_base:amd64-cuda
 
 # Install ROS packages
 COPY .workspace/requirements/ros_packages.txt /tmp/ros_packages.txt
