@@ -21,13 +21,12 @@ fi
 
 install_from_apt() {
     all_packages=""
-    while IFS= read -r package; do
+    while IFS= read -r package || [[ -n "$package" ]]; do
         # Replace underscores with dashes for Debian-based package naming convention
         formatted_package=${package//_/-}
         # Append the formatted package name prefixed with ros-humble- to the all_packages variable
         all_packages+=" ros-humble-$formatted_package"
     done < "$PACKAGE_FILE"
-
 
     if [ -z "$all_packages" ]; then
         echo "No packages to install."
