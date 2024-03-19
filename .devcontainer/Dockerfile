@@ -1,43 +1,14 @@
 FROM althack/ros2:humble-full
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 # Setup mirrors
-RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list
+RUN sed -i 's/http:\/\/ports.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] https://mirrors.tuna.tsinghua.edu.cn/ros2/ubuntu jammy main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
-# Install common packages
-RUN apt-get update \
-   && apt-get -y install --no-install-recommends usbutils git-lfs \
-   && apt-get autoremove -y \
-   && apt-get clean -y \
-   && rm -rf /var/lib/apt/lists/*
-
-# Install ROS packages
-RUN apt-get update \
-   && apt-get -y install --no-install-recommends \
-      ros-humble-camera-calibration \
-      ros-humble-foxglove-bridge \
-      ros-humble-tf-transformations \
-   && apt-get autoremove -y \
-   && apt-get clean -y \
-   && rm -rf /var/lib/apt/lists/*
-
-# Install global pip packages
-COPY python_requirements.txt /tmp/
-RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip \
-  && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
-  && pip install --no-cache-dir -r /tmp/python_requirements.txt
-RUN rm /tmp/python_requirements.txt
-
-# Enable dialog
-ENV DEBIAN_FRONTEND=dialog
-
-# Set up auto-source of workspace for ros user
-ARG WORKSPACE
-RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
 
 # Set up rosdistro mirror
 RUN mkdir -p /etc/ros/rosdep/sources.list.d/ \
    && curl -o /etc/ros/rosdep/sources.list.d/20-default.list https://mirrors.tuna.tsinghua.edu.cn/github-raw/ros/rosdistro/master/rosdep/sources.list.d/20-default.list \
    && echo 'export ROSDISTRO_INDEX_URL=https://mirrors.tuna.tsinghua.edu.cn/rosdistro/index-v4.yaml' >> /home/ros/.bashrc
+
+# Set up auto-source of workspace for ros user
+ARG WORKSPACE
+RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc

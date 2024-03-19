@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/cygnomatic/ros2_ws:humble-trt-full-0370adaa
+FROM cygnomatic/base_workspace:devel-l4t35
 
 # Setup mirrors
 RUN sed -i 's/http:\/\/ports.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
@@ -12,3 +12,6 @@ RUN mkdir -p /etc/ros/rosdep/sources.list.d/ \
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
+
+# To identify this container as a Jetson container
+ENV IS_JETSON_CONTAINER=1
