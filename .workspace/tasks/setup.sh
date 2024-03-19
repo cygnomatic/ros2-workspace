@@ -7,7 +7,14 @@ git submodule update
 sudo apt-get update
 
 rosdep update --rosdistro=$ROS_DISTRO
-rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO
+
+if [ "${IS_JETSON_CONTAINER}" = "1" ]; then
+    echo "OpenCV is already installed on Jetson containers. Skipping installation of OpenCV dependencies."
+    rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO \
+    --skip-keys "libopencv-dev libopencv-contrib-dev libopencv-imgproc-dev python-opencv python3-opencv" 
+else
+    rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO
+fi
 
 # Add upstream remote if not exist
 git remote get-url upstream &>/dev/null
