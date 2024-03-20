@@ -16,6 +16,9 @@ else
     rosdep install --from-paths src --ignore-src -y --rosdistro=$ROS_DISTRO
 fi
 
+git lfs install
+git lfs fetch
+
 # Add upstream remote if not exist
 git remote get-url upstream &>/dev/null
 if [ $? -ne 0 ]; then
