@@ -1,0 +1,1 @@
+echo 'SUBSYSTEMS=="usb", ATTR{idVendor}=="2bdf", MODE="0660", TAG+="uaccess"' | sudo tee -a 65-hik-camera.rules > /dev/null
