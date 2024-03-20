@@ -1,1 +1,1 @@
-SUBSYSTEMS=="usb", ATTR{idVendor}=="2bdf", MODE="0660", TAG+="uaccess"
+SUBSYSTEMS=="usb", ATTR{idVendor}=="2bdf", MODE="0777"
