@@ -18,6 +18,7 @@ fi
 
 git lfs install
 git lfs fetch
+git lfs checkout .
 
 # Add upstream remote if not exist
 git remote get-url upstream &>/dev/null
