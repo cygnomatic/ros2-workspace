@@ -1,0 +1,1 @@
+KERNEL=="ttyTHS0", SUBSYSTEM=="tty", DRIVERS=="serial-tegra", MODE="0777"
