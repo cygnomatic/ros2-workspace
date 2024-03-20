@@ -40,7 +40,7 @@ install_from_apt() {
 
 install_from_source() {
     all_packages=""
-    while IFS= read -r package; do
+    while IFS= read -r package || [[ -n "$package" ]]; do
         all_packages+="$package "
     done < "$PACKAGE_FILE"
 
