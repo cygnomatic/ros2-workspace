@@ -1,6 +1,8 @@
 FROM amd64/ros:humble
 
-SHELL ["/bin/bash", "-c"] 
+SHELL ["/bin/bash", "-c"]
+
+ENV ROS_ROOT /opt/ros/$ROS_DISTRO
 
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip && \
@@ -37,7 +39,7 @@ RUN pip install --no-cache-dir -r /tmp/pip_requirements.txt && \
 ##### CACHE VALID UNTIL HERE #####
 
 WORKDIR /workspace
-COPY . /workspace
+COPY src /workspace/src
 
 # # Install ROS dependencies
 # RUN source ${ROS_ROOT}/install/setup.bash && \
@@ -52,6 +54,8 @@ COPY . /workspace
 RUN source ${ROS_ROOT}/install/setup.bash && \
     colcon build --merge-install --base-paths src
 
-# Change CMD to your workspace bringup command
-RUN echo -e "if [ -f /workspace/install/setup.bash ]; then source /workspace/install/setup.bash; fi" >> /ros_entrypoint.sh
-CMD ["bash"] 
+COPY .workspace/scripts/deployment_ros_entrypoint.sh /ros_entrypoint.sh
+ENTRYPOINT ["/ros_entrypoint.sh"]
+
+# Change CMD to your ros2 bringup command
+CMD ["bash"]
