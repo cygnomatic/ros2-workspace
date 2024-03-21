@@ -3,21 +3,6 @@ FROM --platform=linux/arm64 dustynv/ros:humble-ros-base-l4t-r35.4.1 as base
 # Reset RMW_IMPLEMENTATION to the default FastRTPS
 ENV RMW_IMPLEMENTATION=
 
-# Setup auto-completion for ros2
-RUN apt-get update && apt-get install -y git-core bash-completion && \
-    echo -e "\nif [ -f /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash ]; then source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash; fi" >> /ros_entrypoint.sh && \
-    echo -e "if [ -f /workspace/install/setup.bash ]; then source /workspace/install/setup.bash; fi" >> /ros_entrypoint.sh && \
-    echo -e "\nsource /ros_entrypoint.sh" >> /root/.bashrc && \
-    rm -rf /var/lib/apt/lists/*
-
-# Setup byobu
-RUN apt-get update && apt-get install -y byobu && \
-    rm -rf /var/lib/apt/lists/*
-CMD byobu new -n main
-
-# Remove entrypoint to prevent duplicate sourcing
-ENTRYPOINT []
-
 ###########################################
 # Install requirements & dependencies
 ###########################################
@@ -63,3 +48,7 @@ COPY . /workspace
 
 RUN source ${ROS_ROOT}/install/setup.bash && \
     colcon build --merge-install --base-paths src
+
+# Change CMD to your workspace bringup command
+RUN echo -e "if [ -f /workspace/install/setup.bash ]; then source /workspace/install/setup.bash; fi" >> /ros_entrypoint.sh
+CMD ["bash"] 
