@@ -51,7 +51,7 @@ COPY src /workspace/src
 #         --rosdistro=$ROS_DISTRO \
 #         --skip-keys "libopencv-dev libopencv-contrib-dev libopencv-imgproc-dev python-opencv python3-opencv"
 
-RUN source ${ROS_ROOT}/install/setup.bash && \
+RUN source ${ROS_ROOT}/setup.bash && \
     colcon build --merge-install --base-paths src
 
 COPY .workspace/scripts/deployment_ros_entrypoint.sh /ros_entrypoint.sh
