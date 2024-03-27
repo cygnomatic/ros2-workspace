@@ -1,4 +1,4 @@
-FROM althack/ros2:humble-full
+FROM cygnomatic/ros2ws_devel_base:amd64
 
 # Install ROS packages
 COPY .workspace/requirements/ros_packages.txt /tmp/ros_packages.txt

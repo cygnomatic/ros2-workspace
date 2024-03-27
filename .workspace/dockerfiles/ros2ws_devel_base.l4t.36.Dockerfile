@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-pip \
   ros-dev-tools \
   vim \
+  clangd \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=ros
