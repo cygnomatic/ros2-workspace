@@ -21,7 +21,7 @@
     "C_Cpp.formatting": "disabled",
     "uncrustify.configPath.linux": "/opt/ros/humble/lib/python3.10/site-packages/ament_uncrustify/configuration/ament_code_style.cfg",
     "[cpp]": {
-        "editor.defaultFormatter": "zachflower.uncrustify"
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     },
     "search.exclude": {
         "**/node_modules": true,
@@ -82,4 +82,6 @@
         "reportGeneralTypeIssues": "none",
         "reportAttributeAccessIssue": "none"
     },
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+    "C_Cpp.intelliSenseEngine": "disabled",
 }

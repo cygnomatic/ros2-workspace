@@ -24,11 +24,11 @@
 				"smilerobotics.urdf",
 				"twxs.cmake",
 				"yzhang.markdown-all-in-one",
-				"zachflower.uncrustify",
 				"GitHub.copilot",
 				"donjayamanne.githistory",
 				"CodeInChinese.EnglishChineseDictionary",
-				"ms-python.black-formatter"
+				"ms-python.black-formatter",
+				"llvm-vs-code-extensions.vscode-clangd"
 			]
 		}
 	}
