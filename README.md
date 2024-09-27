@@ -134,3 +134,21 @@ Linux 系统不需要按照此部分操作。可直接使用 USB 设备。
 
 Docker 镜像中已内置 CUDA。不需要进行任何手动配置。  
 无需安装 CUDA for WSL2 或在 WSL 中安装 CUDA。  
+
+## Adopt to Your Workflow (暂不对外开放)
+
+1. 在 CodeUp 上 Fork 本项目。
+
+2. 进入 [codeup_circleci_pipeline](https://github.com/cygnomatic/codeup_circleci_pipeline) 配置文件仓库，参考 `.circleci` 目录下 `plain.yml` 新增一个配置文件，修改其中参数。
+
+3. 在 CodeUp 的 设置 -> Webhooks 中增加一个由标签推送事件触发的 Webhook。
+
+4. 进入 CircleCI，在 [CodeUp 项目](https://app.circleci.com/settings/project/circleci/17Q1ozw2K91TaCvtghpJuL/Vx7rcs2Lz2dB8uHjKYDeBb/triggers) 下新增一条 Trigger 指向上一步中新增的 Webhook。
+
+5. 修改 Fork 项目内的 `.devcontainer/requirements/` 中的依赖。
+
+6. 向 CodeUp 的 Fork 推送一个标签，触发 CircleCI 构建镜像并等待构建完成。
+
+7. 修改 `.devcontainer/Dockerfile` 和 `.devcontainer/Dockerfile.l4t35` 中的基础镜像为 CircleCI 构建的镜像。
+
+8. 执行 `Dev Containers: Rebuild and Reopen in Container`。
