@@ -1,4 +1,4 @@
-FROM cygnomatic/ros2ws_devel_base:amd64
+FROM cygnomatic/ros2_workspace_base:devel
 
 # Install ROS packages
 COPY .workspace/requirements/ros_packages.txt /tmp/ros_packages.txt

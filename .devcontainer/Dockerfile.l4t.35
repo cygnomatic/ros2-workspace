@@ -1,4 +1,4 @@
-FROM cygnomatic/base_ws:devel-l4t35
+FROM cygnomatic/plain_ws:devel-l4t35
 
 # Setup mirrors
 RUN sed -i 's/http:\/\/ports.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list

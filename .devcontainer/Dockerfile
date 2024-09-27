@@ -1,4 +1,4 @@
-FROM cygnomatic/base_ws:devel
+FROM cygnomatic/plain_ws:devel
 
 # Setup mirrors
 RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list

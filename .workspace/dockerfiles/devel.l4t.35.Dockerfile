@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 cygnomatic/ros2ws_devel_base:l4t-r35
+FROM --platform=linux/arm64 cygnomatic/ros2_workspace_base:devel-l4t35
 
 # Install ROS packages
 COPY .workspace/requirements/ros_packages.txt /tmp/ros_packages.txt
