@@ -1,4 +1,4 @@
-FROM registry.cn-beijing.aliyuncs.com/cygnomatic/ros2_ws:humble-trt-full-0370adaa
+FROM cygnomatic/base_ws:devel-cuda
 
 # Setup mirrors
 RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/mirrors.tuna.tsinghua.edu.cn\/ubuntu/g' /etc/apt/sources.list
