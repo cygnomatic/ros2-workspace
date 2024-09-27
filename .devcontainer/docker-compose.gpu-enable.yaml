@@ -2,7 +2,7 @@ version: '3'
 services:
   cygnomatic_workspace:
     build:
-      dockerfile: Dockerfile.cuda
+      dockerfile: Dockerfile
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all
